@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKING BUSINESS - Réparation et Vente de Téléphones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b35;
+            --secondary: #2ec4b6;
+            --accent: #ff9f1c;
+            --dark: #0a2342;
+            --light: #f5f5f5;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Services Section */
+        .services-showcase {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .service-body {
+            padding: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .service-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .testimonial-text:before {
+            content: """;
+            position: absolute;
+            left: 0;
+            top: -1rem;
+            font-size: 3rem;
+            color: var(--secondary);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-details h4 {
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Catalogues et Stocks */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 900px;
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .modal-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .catalog-grid, .phones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .catalog-item, .phone-item {
+            background: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .catalog-item:hover, .phone-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .catalog-img, .phone-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .catalog-info, .phone-info {
+            padding: 1rem;
+        }
+        
+        .catalog-name, .phone-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .catalog-price, .phone-price {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .phone-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .in-stock {
+            background-color: #e6f7ee;
+            color: #28a745;
+        }
+        
+        .low-stock {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .catalog-grid, .phones-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                SKING BUSINESS
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Votre Expert en Réparation de Téléphones</h1>
+            <p>Réparation rapide, accessoires tendance et téléphones décodés pour toutes vos besoins mobiles</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-showcase">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-title">Réparation Express</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Nous réparons votre téléphone rapidement avec des pièces de qualité et une garantie.</p>
+                        <ul class="service-features">
+                            <li>Écrans brisés</li>
+                            <li>Problèmes de batterie</li>
+                            <li>Réparations de connectique</li>
+                            <li>Support logiciel</li>
+                        </ul>
+                        <a href="#contact" class="btn">Demander un devis</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🛒</div>
+                        <h3 class="service-title">Accessoires Tendances</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Découvrez notre sélection d'accessoires pour personnaliser et protéger votre appareil.</p>
+                        <ul class="service-features">
+                            <li>Coques design</li>
+                            <li>Chargeurs rapides</li>
+                            <li>Écouteurs qualité</li>
+                            <li>Support innovants</li>
+                        </ul>
+                        <button onclick="openCatalog()" class="btn">Voir le catalogue</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📱</div>
+                        <h3 class="service-title">Téléphones Décodés</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Des smartphones déverrouillés, prêts à l'emploi avec tous les opérateurs.</p>
+                        <ul class="service-features">
+                            <li>Neufs et reconditionnés</li>
+                            <li>Toutes marques</li>
+                            <li>Garantie incluse</li>
+                            <li>Conseils experts</li>
+                        </ul>
+                        <!-- Pour les iPhones -->
+                        <button onclick="openIphones()" class="btn">Voir le stock iPhones</button>
+                        
+                        <!-- Pour les autres marques -->
+                        <button onclick="openAutresMarques()" class="btn">Voir autres marques</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">À Propos de Nous</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Fondée en 2023, SKING BUSINESS est devenue une référence dans le domaine de la réparation et de la vente de téléphones mobiles.</p>
+                    <p>Notre équipe de techniciens certifiés est passionnée par les nouvelles technologies et s'engage à vous offrir un service de qualité avec des pièces authentiques et une garantie sur toutes nos réparations.</p>
+                    <p>Que vous ayez besoin de réparer votre appareil, d'acheter des accessoires de qualité ou de vous procurer un téléphone décodé, nous sommes là pour vous conseiller et vous offrir le meilleur service.</p>
+                    <a href="#contact" class="btn">En savoir plus</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Notre atelier de réparation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce Que Disent Nos Clients</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">J'ai fait réparer l'écran de mon iPhone chez SKING BUSINESS et je suis très satisfait du service. Rapide, professionnel et prix très correct. Je recommande !</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas L.">
+                        </div>
+                        <div class="author-details">
+                            <h4>Nafissa S.</h4>
+                            <p>Client depuis 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">J'ai acheté un Samsung Galaxy reconditionné et j'en suis très contente. Il fonctionne parfaitement et j'ai économisé près de 40% par rapport au neuf.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophie M.">
+                        </div>
+                        <div class="author-details">
+                            <h4>Ibrahim D.</h4>
+                            <p>Client depuis 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Service client exceptionnel ! Ils ont réparé mon téléphone en moins d'une heure et m'ont donné de précieux conseils pour entretenir mon appareil.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Marc D.">
+                        </div>
+                        <div class="author-details">
+                            <h4>Ismaël F.</h4>
+                            <p>Client depuis 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-Nous</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Koubia</h3>
+                            <p>Route Tillabery<br>Niamey - Niger</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+227 86 05 37 50</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>soolk018@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Horaires</h3>
+                            <p>Lun-Ven: 9h-20h<br>Samedi: 10h-22h<br>Dimanche: Ouvert</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service concerné</label>
+                            <select id="service">
+                                <option value="">Sélectionnez un service</option>
+                                <option value="repair">Réparation</option>
+                                <option value="accessories">Accessoires</option>
+                                <option value="phones">Téléphones décodés</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">SKING BUSINESS</div>
+                    <p>Votre partenaire de confiance pour toutes vos solutions mobiles. Réparation, accessoires et téléphones décodés.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#testimonials">Témoignages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Réparation de téléphone</a></li>
+                        <li><a href="#">Vente d'accessoires</a></li>
+                        <li><a href="#">Téléphones décodés</a></li>
+                        <li><a href="#">Diagnostic gratuit</a></li>
+                        <li><a href="#">Services entreprises</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Garanties</a></li>
+                        <li><a href="#">Conditions générales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Centre d'aide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SKING BUSINESS. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal pour le catalogue d'accessoires -->
+    <div id="catalogModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('catalogModal')">&times;</span>
+            <h2 class="modal-title">Notre Catalogue d'Accessoires</h2>
+            <div class="catalog-grid">
+                <div class="catalog-item">
+                    <img src="usb.webp" alt="Coque iPhone" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">‎Chargeur  USB de 25w jusqu’à 120w</h3>
+                        <p class="catalog-price">1500 FCFA jusqu’à 5000 FCFA</p>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="pochette.jpg" alt="Chargeur rapide" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">‎Pochette téléphone silicone </h3>
+                        <p class="catalog-price">2000 FCFA</p>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="bl.jpg" alt="Écouteurs sans fil" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">Écouteurs Bluetooth</h3>
+                        <p class="catalog-price">1000 FCFA à 5000 FCFA</p>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="poche.jpg" alt="Écouteurs sans fil" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">‎Pochette téléphone</h3>
+                        <p class="catalog-price">1000 FCFA</p>
+                    </div>
+                </div>                
+                <div class="catalog-item">
+                    <img src="airpod.jpg" alt="Support voiture" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">‎AirPod</h3>
+                        <p class="catalog-price">2000 FCFA jusqu’à 12000 FCFA</p>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="power.jpg" alt="Power Bank" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">Power Bank 5000mAh / 10000mAh / 20000mAh</h3>
+                        <p class="catalog-price">1500 FCFA / 5 000 FCFA / 15 000 FCFA </p>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="antichoc.jpg" alt="Protection écran" class="catalog-img">
+                    <div class="catalog-info">
+                        <h3 class="catalog-name">‎Antichocs téléphone </h3>
+                        <p class="catalog-price">500 FCFA / Fumé : 750 FCFA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Modal pour les iPhones -->
+    <div id="iphonesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('iphonesModal')">&times;</span>
+            <h2 class="modal-title">📱 iPhones en Stock</h2>
+            <div class="phones-grid">
+                <div class="phone-item">
+                    <img src="iphone-x.jpg" alt="iPhone X 64Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone X 64Go</h3>
+                        <p class="phone-price">100.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphonex.jpg" alt="iPhone X 256Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone X 256Go</h3>
+                        <p class="phone-price">110.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone11.jpg" alt="iPhone 11 64Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 11 64Go</h3>
+                        <p class="phone-price">145.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone11.jpg" alt="iPhone 11 128Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 11 128Go</h3>
+                        <p class="phone-price">170.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone12.jpg" alt="iPhone 12 64Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 12 64Go</h3>
+                        <p class="phone-price">200.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone12promax.jpg" alt="iPhone 12 Pro Max 128Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 12 Pro Max 128Go</h3>
+                        <p class="phone-price">300.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone13promax.jpg" alt="iPhone 13 128Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 13 128Go</h3>
+                        <p class="phone-price">305.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone13promax.jpg" alt="iPhone 13 Pro Max 256Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 13 Pro Max 256Go</h3>
+                        <p class="phone-price">360.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="iPhone 14 128Go" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 14 128Go</h3>
+                        <p class="phone-price">365.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone14pro.jpg" alt="iPhone 14 Pro Max" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 14 Pro Max</h3>
+                        <p class="phone-price">440.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="iPhone 15" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 15</h3>
+                        <p class="phone-price">455.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone15pro.jpg" alt="iPhone 15 Pro Max" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 15 Pro Max</h3>
+                        <p class="phone-price">560.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone16.jpg" alt="iPhone 16" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 16</h3>
+                        <p class="phone-price">520.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="iphone16promax.jpg" alt="iPhone 16 Pro Max" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">iPhone 16 Pro Max</h3>
+                        <p class="phone-price">800.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal pour les autres marques -->
+    <div id="autresMarquesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('autresMarquesModal')">&times;</span>
+            <h2 class="modal-title">📱 Autres Marques en Stock</h2>
+            <div class="phones-grid">
+                <!-- TECNO -->
+                <div class="phone-item">
+                    <img src="spark40.jpg" alt="Tecno Spark 40 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Spark 40 128G</h3>
+                        <p class="phone-price">70.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="spark40.jpg" alt="Tecno Spark 40 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Spark 40 256G</h3>
+                        <p class="phone-price">85.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="spark40pro.jpg" alt="Tecno Spark 40 Pro 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Spark 40 Pro 256G</h3>
+                        <p class="phone-price">120.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="pop10c.jpg" alt="Tecno Pop 10C 64G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Pop 10C 64G</h3>
+                        <p class="phone-price">45.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="pop10.png" alt="Tecno Pop 10 64G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Pop 10 64G</h3>
+                        <p class="phone-price">50.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="pop10.png" alt="Tecno Pop 10 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Pop 10 128G</h3>
+                        <p class="phone-price">60.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="camon40p.jpg" alt="Tecno Camon 40 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Camon 40 256G</h3>
+                        <p class="phone-price">130.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="camon40p.jpg" alt="Tecno Camon 40 Pro 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tecno Camon 40 Pro 256G</h3>
+                        <p class="phone-price">150.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                
+                <!-- INFINIX -->
+                <div class="phone-item">
+                    <img src="hot10.jpg" alt="Infinix Hot 60i 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Infinix Hot 60i 128G</h3>
+                        <p class="phone-price">60.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="smart8.jpg" alt="Infinix Smart 8 64G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Infinix Smart 8 64G</h3>
+                        <p class="phone-price">45.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="smart10.jpg" alt="Infinix Smart 10 64G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Infinix Smart 10 64G</h3>
+                        <p class="phone-price">49.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                
+                <!-- REDMI -->
+                <div class="phone-item">
+                    <img src="mia5.jpeg" alt="Redmi A5 64G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi A5 64G</h3>
+                        <p class="phone-price">50.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="mia5.jpg" alt="Redmi A5 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi A5 128G</h3>
+                        <p class="phone-price">58.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="note13.png" alt="Redmi Note 13 Pro+ 5G 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi Note 13 Pro+ 5G 256G</h3>
+                        <p class="phone-price">170.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="mi14.jpg" alt="Redmi Note 14 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi Note 14 256G</h3>
+                        <p class="phone-price">120.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="mi14.jpg" alt="Redmi Note 14 Pro 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi Note 14 Pro 256G</h3>
+                        <p class="phone-price">155.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="mi14.jpg" alt="Redmi 14C 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi 14C 128G</h3>
+                        <p class="phone-price">60.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="mi14.jpg" alt="Redmi 14C 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Redmi 14C 256G</h3>
+                        <p class="phone-price">70.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                
+                <!-- SAMSUNG -->
+                <div class="phone-item">
+                    <img src="a16.jpg" alt="Samsung Galaxy A16 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Samsung Galaxy A16 128G</h3>
+                        <p class="phone-price">77.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="a26.jpg" alt="Samsung Galaxy A26 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Samsung Galaxy A26 128G</h3>
+                        <p class="phone-price">145.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="a36.jpg" alt="Samsung Galaxy A36 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Samsung Galaxy A36 256G</h3>
+                        <p class="phone-price">175.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="a06.jpg" alt="Samsung Galaxy A06 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Samsung Galaxy A06 128G</h3>
+                        <p class="phone-price">65.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="a07.jpg" alt="Samsung Galaxy A07 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Samsung Galaxy A07 128G</h3>
+                        <p class="phone-price">75.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                
+                <!-- ITEL -->
+                <div class="phone-item">
+                    <img src="itelp55.jpeg" alt="Itel P55+ 256G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Itel P55+ 256G</h3>
+                        <p class="phone-price">68.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                <div class="phone-item">
+                    <img src="itelp70.jpg" alt="Itel P70 128G" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Itel P70 128G</h3>
+                        <p class="phone-price">68.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+                
+                <!-- TABLETTES -->
+                <div class="phone-item">
+                    <img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-tab-a9-1.jpg" alt="Tablette éducative" class="phone-img">
+                    <div class="phone-info">
+                        <h3 class="phone-name">Tablette éducative</h3>
+                        <p class="phone-price">30.000 - 40.000 FCFA</p>
+                        <span class="phone-status in-stock">En stock</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    
+        // Fonctions pour ouvrir les modals
+        function openIphones() {
+            document.getElementById('iphonesModal').style.display = 'block';
+        }
+        
+        function openAutresMarques() {
+            document.getElementById('autresMarquesModal').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Fermer les modals en cliquant en dehors
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+        // Fonctions pour les modals
+        function openCatalog() {
+            document.getElementById('catalogModal').style.display = 'block';
+        }
+        
+        function openPhones() {
+            document.getElementById('phonesModal').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Fermer les modals en cliquant en dehors
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        // Form submission avec envoi vers WhatsApp et email
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Récupérer les données du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Vérifier que tous les champs requis sont remplis
+            if (!name || !email || !message) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            // Préparer le message pour WhatsApp
+            const whatsappMessage = `Nouveau message de ${name}%0AEmail: ${email}%0ATéléphone: ${phone || 'Non fourni'}%0AService: ${service || 'Non spécifié'}%0AMessage: ${message}`;
+            
+            // Numéro de téléphone WhatsApp (remplacez par votre numéro)
+            const whatsappNumber = "22786053750"; // Format international sans le +
+            
+            // Ouvrir WhatsApp avec le message pré-rempli
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+            
+            // Envoyer également par email (via mailto)
+            const subject = `Message de ${name} - Service: ${service || 'Général'}`;
+            const emailBody = `Nom: ${name}%0D%0AEmail: ${email}%0D%0ATéléphone: ${phone || 'Non fourni'}%0D%0AService: ${service || 'Non spécifié'}%0D%0AMessage: ${message}`;
+            
+            // Ouvrir le client email par défaut
+            window.location.href = `mailto:contact@skingbusiness.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Réinitialiser le formulaire
+            contactForm.reset();
+            
+            // Message de confirmation
+            alert('Merci pour votre message! Vous allez être redirigé vers WhatsApp et votre client email.');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
